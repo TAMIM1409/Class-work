@@ -1,0 +1,228 @@
+#include<iostream>
+
+using namespace std;
+
+class Student{
+    protected:
+        // Attributes
+        long id;
+        string name;
+        float cgpa;
+
+    public:
+        // Default Constructor
+        Student(){
+            cout << "The student object is getting created using default constructor..." << endl;
+            id = 0;
+            cgpa = 0.0;
+        }
+
+        // Parameterized Constructor
+        Student(long i){
+            cout << "The student object is getting created using 1 param constructor..." << endl;
+            id = i;
+            cgpa = 0.0;
+        }
+
+        Student(string n){
+            cout << "The student object is getting created using 1 param constructor..." << endl;
+            name = n;
+            id = 0;
+            cgpa = 0.0;
+        }
+
+        Student(long i, string n){
+            cout << "The student object is getting created using 2 param constructor..." << endl;
+            id = i;
+            name = n;
+            cgpa = 0.0;
+        }
+
+        Student(long i, string n, float c){
+            cout << "The student object is getting created using 3 param constructor..." << endl;
+            id = i;
+            name = n;
+            cgpa = c;
+        }
+
+        // Destructor
+        ~Student() {
+            cout << "The Student object with- " << endl;
+            cout << "ID: " << id << ", " << endl;
+            cout << "Name: " << name << " and " << endl;
+            cout << "CGPA: " << cgpa << endl;
+            cout << "is getting destructed by destructor..." << endl << endl;
+        }
+
+        // Getter and Setter Functions
+        long getId(){
+            return id;
+        }
+
+        void setId(long i){
+            id = i;
+        }
+
+        string getName(){
+            return name;
+        }
+
+        void setName(string n){
+            name = n;
+        }
+
+        float getCgpa(){
+            return cgpa;
+        }
+
+        void setCgpa(float c){
+            cgpa = c;
+        }
+
+        void showDetails(){
+            cout << "--------------------------------------------------------------" << endl;
+            cout << "| Student Info: " << endl;
+            cout << "|-------------------------------------------------------------" << endl;
+            cout << "| ID: " << id << endl;
+            cout << "| Name: " << name << endl;
+            cout << "| CGPA: " << cgpa << endl;
+            cout << "--------------------------------------------------------------" << endl;
+        }
+};
+
+class ScienceStudent: public Student {
+    protected:
+        string scientificCalculatorName;
+
+    public:
+        ScienceStudent(): Student() {
+            cout << "The science student object is getting created using default constructor..." << endl;
+        }
+
+        ScienceStudent(long i, string n, float c, string scn): Student(i, n, c) {
+            cout << "The science student object is getting created using 4 params constructor..." << endl;
+            scientificCalculatorName = scn;
+        }
+
+        ~ScienceStudent() {
+            cout << "The Science Student object with- " << endl;
+            cout << "ID: " << id << ", " << endl;
+            cout << "Name: " << name << " and " << endl;
+            cout << "CGPA: " << cgpa << endl;
+            cout << "Scientific Calculator Name: " << scientificCalculatorName << endl;
+            cout << "is getting destructed by destructor..." << endl;
+        }
+
+        string getScienticCalculatorName() {
+            return scientificCalculatorName;
+        }
+
+        void setScienticCalculatorName(string scn) {
+            scientificCalculatorName = scn;
+        }
+
+        void showDetails(){
+            Student::showDetails();
+            cout << "--------------------------------------------------------------" << endl;
+            cout << "| Science Student Info: " << endl;
+            cout << "|-------------------------------------------------------------" << endl;
+            cout << "| Scientific Calculator Name : " << scientificCalculatorName << endl;
+            cout << "--------------------------------------------------------------" << endl;
+        }
+};
+
+class CSEStudent: public ScienceStudent {
+    private:
+        string laptopName;
+
+    public:
+        CSEStudent(): ScienceStudent() {
+            cout << "The CSE student object is getting created using default constructor..." << endl;
+        }
+
+        CSEStudent(long i, string n, float c, string scn, string ln): ScienceStudent(i, n, c, scn) {
+            cout << "The CSE student object is getting created using 5 params constructor..." << endl;
+            laptopName = ln;
+        }
+
+        ~CSEStudent() {
+            cout << "The CSE Student object with- " << endl;
+            cout << "ID: " << id << ", " << endl;
+            cout << "Name: " << name << " and " << endl;
+            cout << "CGPA: " << cgpa << endl;
+            cout << "Scientific Calculator Name: " << scientificCalculatorName << endl;
+            cout << "Laptop Name: " << laptopName << endl;
+            cout << "is getting destructed by destructor..." << endl;
+        }
+
+        string getLaptopName() {
+            return laptopName;
+        }
+
+        void setLaptopName(string ln) {
+            laptopName = ln;
+        }
+
+        void showDetails(){
+            ScienceStudent::showDetails();
+            cout << "--------------------------------------------------------------" << endl;
+            cout << "| CSE Student Info: " << endl;
+            cout << "|-------------------------------------------------------------" << endl;
+            cout << "| Laptop Name : " << laptopName << endl;
+            cout << "--------------------------------------------------------------" << endl;
+        }
+};
+
+class CivilStudent: public ScienceStudent {
+private:
+    string measureScaleName;
+
+public:
+    CivilStudent(): ScienceStudent() {
+        cout << "The Civil student object is getting created using default constructor..." << endl;
+    }
+
+    CivilStudent(long i, string n, float c, string scn, string msn): ScienceStudent(i, n, c, scn) {
+        cout << "The Civil student object is getting created using 5 params constructor..." << endl;
+        measureScaleName = msn;
+    }
+
+    ~CivilStudent() {
+        cout << "The Civil Student object with- " << endl;
+        cout << "ID: " << id << ", " << endl;
+        cout << "Name: " << name << " and " << endl;
+        cout << "CGPA: " << cgpa << endl;
+        cout << "Scientific Calculator Name: " << scientificCalculatorName << endl;
+        cout << "Measure Scale Name: " << measureScaleName << endl;
+        cout << "is getting destructed by destructor..." << endl;
+    }
+
+    string getMeasureScaleName() {
+        return measureScaleName;
+    }
+
+    void setMeasureScaleName(string msn) {
+        measureScaleName = msn;
+    }
+
+    void showDetails(){
+        ScienceStudent::showDetails();
+        cout << "--------------------------------------------------------------" << endl;
+        cout << "| Civil Student Info: " << endl;
+        cout << "|-------------------------------------------------------------" << endl;
+        cout << "| Measure Scale Name: " << measureScaleName << endl;
+        cout << "--------------------------------------------------------------" << endl;
+    }
+};
+
+int main(){
+    CSEStudent cses(20265103, "Selim", 2.96, "Casio-991ES", "Asus Gen Book");
+    CivilStudent cs(20261107, "Sadman", 3.96, "Casio-1000MS", "Alvin Engineering Scale");
+    cout << endl;
+
+    cses.showDetails();
+    cs.showDetails();
+    cout << endl;
+
+    return 0;
+} . bujiya daw vhalo kore
