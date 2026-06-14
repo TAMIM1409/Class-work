@@ -1,0 +1,141 @@
+#include<iostream>
+using namespace std;
+
+class Animal {
+protected:
+    //Attributes
+    string scientificname;
+public:
+    //Parameterized Constructor
+    Animal(string name) {
+        cout << "The Animal object is created by constructor"<<endl;
+        scientificname = name;
+    }
+
+    // Destructor
+    ~Animal() {
+        cout<<"Scientific Name:"<<scientificname<<endl;
+        cout<<"The Animal object is getting destructed by destructor"<<endl;
+    }
+    void showDetails() {
+        cout<<"Animal:"<<endl;
+        cout<<"Scientific Name:"<<scientificname<<endl;
+    }
+    // Getter and Setter Functions
+    string getscientificname() {
+        return scientificname;
+    }
+    void setscientificname(string name) {
+        scientificname = name;
+    }
+
+};
+
+    class Mammal:public Animal {
+    protected:
+        int hands;
+        int legs;
+    public:
+        Mammal(string name, int h, int l):Animal(name) {
+            hands = h;
+            legs = l;
+            cout << "The Mammla object is created by constructor"<<endl;
+        }
+        ~Mammal() {
+            cout<<"Scientific Name:"<<scientificname<<endl;
+            cout<<"Hands:"<<hands<<endl;
+            cout<<"Legs:"<<legs<<endl;
+            cout<<"The Mammla object is getting destructed by destructor"<<endl;
+        }
+
+        int gethands() {
+            return hands;
+        }
+        void sethands(int h) {
+            hands = h;
+        }
+        int getlegs() {
+            return legs;
+        }
+        void setlegs(int l) {
+            legs = l;
+        }
+
+        void showDetails() {
+            cout<<"Mammal:"<<endl;
+            cout<<"Hands"<<hands<<endl;
+            cout<<"Legs:"<<legs<<endl;
+        }
+
+    };
+
+
+        class Human:public Mammal {
+           private:
+           string ethnicity;
+
+           public:
+           Human(string name, int h, int l,string eth):Mammal(name,h,l) {
+               ethnicity = eth;
+               cout << "The Human object is created by constructor"<<endl;
+           }
+
+           ~Human() {
+               cout<<"Scientific Name:"<<scientificname<<endl;
+               cout<<"Hands:"<<hands<<endl;
+               cout<<"Legs:"<<legs<<endl;
+               cout<<"Human Name:"<<ethnicity<<endl;
+               cout<<"The Human object is getting destructed by destructor"<<endl;
+           }
+
+           string getethnicity() {
+               return ethnicity;
+           }
+           void setethnicity(string eth) {
+               ethnicity = eth;
+           }
+
+           void showDetails() {
+               cout<<"Human:"<<endl;
+               cout<<"Ethnicity:"<<ethnicity<<endl;
+
+           }
+       };
+
+    class cow:public Mammal {
+    private:
+        int Horns;
+    public:
+        cow(string name, int h, int l,int ho):Mammal(name,h,l){
+            Horns = ho;
+            cout << "The cow object is created by constructor"<<endl;
+        }
+
+        ~cow() {
+            cout<<"Scientific Name:"<<scientificname<<endl;
+            cout<<"Hands:"<<hands<<endl;
+            cout<<"Legs:"<<legs<<endl;
+            cout<<"Human Horns:"<<Horns<<endl;
+            cout<<"The cow object is getting destructed by destructor"<<endl;
+        }
+
+
+        void showDetails() {
+            cout<<"Cow:"<<endl;
+            cout<<"Cow Horns:"<<Horns<<endl;
+        }
+
+    };
+
+
+//Main funcion
+
+int main() {
+    Mammal m("Unknown",2,2);
+    Human hu("Homo sapiens", 2, 2, "Asian");
+    cow c("Bos taurus", 0, 4, 2);
+    m.showDetails();
+    hu.showDetails();
+    c.showDetails();
+    return 0;
+}
